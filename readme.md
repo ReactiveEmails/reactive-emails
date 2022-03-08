@@ -66,7 +66,7 @@ Raw Reactive Hash = First 5 characters of SHA256(github1mysecret)
 Raw Reactive Hash = 06fc2
 ```
 
-Using the raw reactive hash character map, our final recative hash would look like:
+Using the raw reactive hash character map, our final reactive hash would look like:
 
 ```text
 Raw Reactive Hash   = 06fc2
