@@ -1,1 +1,5 @@
-export { generateReactiveEmail } from '~/utils/generate.js';
+export {
+	generateReactiveEmail,
+	generateReactiveHash,
+	rawReactiveHashCharacterMap,
+} from '~/utils/generate.js';
