@@ -54,7 +54,9 @@ The purpose of this map is to prevent emails with words or letter combinations r
 If we're generating a reactive email for a new account on GitHub, our purpose string would be `github`, our version number would be `1`, and our reactive hash secret can be any secret (which should be the same for all reactive emails):
 
 **Purpose:** `github`
+
 **Version Number:** `1`
+
 **Reactive Hash Secret:** `mysecret`
 
 Our raw reactive hash would then look as follows:
