@@ -1,6 +1,6 @@
 # Reactive Emails
 
-Reactive emails are a solution to the long-lived problem of spam emails. Spam emails take advantage of one critical flaw of email address: they can't be easily changed.
+Reactive emails are a solution to the long-lived problem of spam emails. Spam emails take advantage of one critical flaw of most email addresses: they can't be easily changed.
 
 Reactive emails provide a system for generating unguessable yet recoverable emails that can be changed at any time. The idea is to use a separate reactive email for each service, so that if an email for one service ever gets leaked, you can easily generate a new email address and only need to update it for that one service. In other words, your email addresses are "reactive:" they can be easily changed whenever they get leaked.
 
