@@ -82,7 +82,7 @@ github1bmzvd@example.com
 
 > Note that the email domain must be a custom domain and not a domain like `@gmail.com` since you need to be able to link all these reactive emails to one email account.
 
-Now, let's say this email accidentally got leaked publically (maybe you accidentally associated one of your public GitHub commits with this reactive email). Now, spammers are unapologetically sending this email tons of spam. Luckily, reactive emails allow you to easily refresh your email by simply bumping the version number and generating a new unguessable reactive hash:
+Now, let's say this email accidentally got leaked publicly (maybe you accidentally associated one of your public GitHub commits with this reactive email). Now, spammers are unapologetically sending this email tons of spam. Luckily, reactive emails allow you to easily refresh your email by simply bumping the version number and generating a new unguessable reactive hash:
 
 ```text
 New Raw Reactive Hash = First 5 characters of SHA256(github2mysecret)
