@@ -82,7 +82,7 @@ Final Reactive Email   = github1hznvz@example.com
 Now, let's say this email accidentally got leaked publicly (maybe you accidentally associated one of your public GitHub commits with this reactive email). Now, spammers are unapologetically sending this email tons of spam. Luckily, reactive emails allow you to easily refresh your email by simply bumping the version number and generating a new unguessable reactive hash:
 
 ```text
-New Raw Reactive Hash = First 5 characters of base8(SHA256(github2mysecret))
+New Raw Reactive Hash = Last 5 characters of base8(SHA256(github2mysecret))
 New Raw Reactive Hash = 54244 (base 8)
 Final Reactive Hash   = qnhnn
 ```
