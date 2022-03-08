@@ -66,7 +66,7 @@ Raw Reactive Hash = 27647 (base 8)
 Using the raw reactive hash character map, our final reactive hash would look like:
 
 ```text
-Raw Reactive Hash   = 27647
+Raw Reactive Hash   = 27647 (base 8)
 Final Reactive Hash = hzvnz
 ```
 
@@ -87,7 +87,7 @@ New Raw Reactive Hash = 54244 (base 8)
 Final Reactive Hash   = qnhnn
 ```
 
-Thus, our new reactive email for GitHub would be `github2nmbvm@example.com`.
+Thus, our new reactive email for GitHub would be `github2qnhnn@example.com`.
 
 ## Explanation
 
