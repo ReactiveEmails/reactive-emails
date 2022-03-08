@@ -76,8 +76,8 @@ Final Reactive Hash = bmzvd
 And thus, if our email domain is `example.com`, our reactive email address for GitHub would be:
 
 ```text
-[Purpose][Email Version Number][Reactive Hash]@[Domain]
-github1bmzvd@example.com
+Reactive Email Formula = [Purpose][Email Version Number][Reactive Hash]@[Domain]
+Final Reactive Email   = github1bmzvd@example.com
 ```
 
 > Note that the email domain must be a custom domain and not a domain like `@gmail.com` since you need to be able to link all these reactive emails to one email account.
