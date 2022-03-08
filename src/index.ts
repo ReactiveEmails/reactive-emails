@@ -1,5 +1,5 @@
 export {
 	generateReactiveEmail,
 	generateReactiveHash,
-	rawReactiveHashCharacterMap,
+	defaultReactiveHashCharacterSet,
 } from '~/utils/generate.js';

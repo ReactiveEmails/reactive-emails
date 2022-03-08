@@ -1,66 +1,68 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import shajs from 'sha.js';
 
-export const rawReactiveHashCharacterMap = {
-	'0': 'b',
-	'1': 'b',
-	'2': 'd',
-	'3': 'd',
-	'4': 'h',
-	'5': 'h',
-	'6': 'm',
-	'7': 'm',
-	'8': 'n',
-	'9': 'n',
-	a: 'q',
-	b: 'q',
-	c: 'v',
-	d: 'v',
-	e: 'z',
-	f: 'z',
-};
+export const defaultReactiveHashCharacterSet = 'bdhmnqvz';
+const defaultReactiveHashLength = 5;
 
 type GenerateReactiveHashProps = {
 	purpose: string;
 	versionNumber: number;
-	reactiveHashSecret: string;
+	secret: string;
+	characterSet?: string;
+	length?: number;
 };
 export function generateReactiveHash({
 	purpose,
 	versionNumber,
-	reactiveHashSecret,
+	secret,
+	characterSet,
+	length,
 }: GenerateReactiveHashProps) {
-	const rawReactiveHash = shajs('sha256')
-		.update(`${purpose}${versionNumber}${reactiveHashSecret}`)
-		.digest('hex')
-		.slice(0, 5);
+	const rawReactiveHashNumber = BigInt(
+		`0x${shajs('sha256')
+			.update(`${purpose}${versionNumber}${secret}`)
+			.digest('hex')}`
+	);
 
-	const reactiveHashArray = [];
-	for (const char of rawReactiveHash) {
-		reactiveHashArray.push(
-			rawReactiveHashCharacterMap[
-				char as keyof typeof rawReactiveHashCharacterMap
-			]
-		);
+	const reactiveHashCharacterSet =
+		characterSet ?? defaultReactiveHashCharacterSet;
+
+	const base = BigInt(reactiveHashCharacterSet.length);
+	const lastDigits = [];
+	const hashLength = BigInt(length ?? defaultReactiveHashLength);
+	console.log(rawReactiveHashNumber);
+	for (let i = hashLength - 1n; i >= 0; i -= 1n) {
+		lastDigits.push((rawReactiveHashNumber / base ** i) % base);
 	}
 
-	return reactiveHashArray.join('');
+	const reactiveHash = lastDigits
+		.map((digit) => reactiveHashCharacterSet.charAt(Number(digit)))
+		.join('');
+
+	return reactiveHash;
 }
 
-type GenerateReactiveEmailProps = GenerateReactiveHashProps & {
+type GenerateReactiveEmailProps = {
 	domain: string;
+	purpose: string;
+	versionNumber: number;
+	reactiveHashSecret: string;
+	reactiveHashOptions?: Omit<
+		GenerateReactiveHashProps,
+		'purpose' | 'versionNumber' | 'secret'
+	>;
 };
 export function generateReactiveEmail({
 	purpose,
 	versionNumber,
 	reactiveHashSecret,
+	reactiveHashOptions,
 	domain,
 }: GenerateReactiveEmailProps) {
 	const reactiveHash = generateReactiveHash({
 		purpose,
 		versionNumber,
-		reactiveHashSecret,
+		secret: reactiveHashSecret,
+		...reactiveHashOptions,
 	});
 	return `${purpose}${versionNumber}${reactiveHash}@${domain}`;
 }

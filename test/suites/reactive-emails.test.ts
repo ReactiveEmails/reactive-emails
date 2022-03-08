@@ -5,11 +5,11 @@ test('generates correct reactive email', () => {
 	expect(
 		generateReactiveEmail({
 			purpose: 'github',
-			reactiveHashSecret: 'mysecret',
 			versionNumber: 1,
+			reactiveHashSecret: 'mysecret',
 			domain: 'example.com',
 		})
-	).toEqual('github1bmzvd@example.com');
+	).toEqual('github1hzvnz@example.com');
 
 	expect(
 		generateReactiveEmail({
@@ -18,5 +18,5 @@ test('generates correct reactive email', () => {
 			versionNumber: 2,
 			domain: 'example.com',
 		})
-	).toEqual('github2nmbvm@example.com');
+	).toEqual('github2qnhnn@example.com');
 });
