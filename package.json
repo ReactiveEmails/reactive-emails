@@ -1,7 +1,7 @@
 {
 	"name": "reactive-emails",
 	"version": "0.0.1",
-	"description": "An implementation for a special type of emails that protect against spam through their reactive native.",
+	"description": "An implementation for a special type of emails that protect against spam through their reactive nature.",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -30,6 +30,7 @@
 		"@leonzalion/configs": "^1.1.9",
 		"@types/node": "^17.0.0",
 		"@types/sha.js": "^2.4.0",
+		"base-x": "^4.0.0",
 		"desm": "^1.2.0",
 		"eslint": "^8.5.0",
 		"execa": "^6.0.0",
