@@ -1,5 +1,5 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../tsconfig.json",
 	"compilerOptions": {
 		"module": "esnext",
 		"target": "esnext",
@@ -11,8 +11,8 @@
 	"include": [
 		"src/**/*.ts",
 		"typings/contracts.d.ts",
-		"../../typings/**/*.d.ts"
-, "src/index.mts"	],
+		"../typings/**/*.d.ts"
+	],
 	"exclude": [
 		"**/*.spec.ts",
 		"**/*.test.ts"
