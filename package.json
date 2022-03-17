@@ -1,6 +1,6 @@
 {
 	"name": "reactive-emails",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "An implementation for a special type of emails that protect against spam through their reactive nature.",
 	"license": "MIT",
 	"repository": {
