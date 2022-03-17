@@ -32,7 +32,7 @@ importers:
       tsc-alias: 1.6.4
       typescript: 4.6.2
 
-  packages/electron:
+  packages/desktop-app:
     specifiers:
       '@vitejs/plugin-vue': 2.2.4
       '@vue/test-utils': 2.0.0-rc.17
