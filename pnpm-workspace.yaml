@@ -1,0 +1,3 @@
+packages:
+  - packages/desktop-app
+  - packages/utilities
