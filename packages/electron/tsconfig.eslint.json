@@ -1,0 +1,12 @@
+{
+	"extends": "./tsconfig.json",
+	"include": [
+		"main",
+		"preload",
+		"renderer",
+		"typings",
+		".electron-builder.config.js",
+		".eslintrc.cjs",
+		"vitest.config.ts"
+	]
+}

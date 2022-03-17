@@ -1,12 +1,10 @@
 {
-	"extends": "./tsconfig.json",
 	"include": [
-		"src",
-		"test",
-		"typings",
+		"packages",
 		"scripts",
 		".eslintrc.cjs",
 		".markdownlint.cjs",
+		".nano-staged.mjs",
 		"vitest.config.ts"
 	]
 }

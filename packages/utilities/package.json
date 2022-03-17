@@ -1,0 +1,39 @@
+{
+	"name": "reactive-emails",
+	"version": "0.0.2",
+	"description": "An implementation for a special type of emails that protect against spam through their reactive nature.",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/leonzalion/reactive-emails.git"
+	},
+	"homepage": "https://github.com/leonzalion/reactive-emails#readme",
+	"author": {
+		"name": "Leon Si",
+		"email": "contact@leonzalion.com",
+		"url": "https://leonzalion.com"
+	},
+	"type": "module",
+	"main": "./index.js",
+	"scripts": {
+		"release": "lionp",
+		"build": "node-ts ./scripts/build.ts",
+		"start": "node-ts ./src/index.ts",
+		"test": "vitest run",
+		"lint": "eslint --cache --fix .",
+		"prettier": "prettier --write src",
+		"tc": "tsc --noEmit"
+	},
+	"dependencies": {
+		"sha.js": "^2.4.11"
+	},
+	"devDependencies": {
+		"@types/sha.js": "^2.4.0",
+		"base-x": "^4.0.0",
+		"lionp": "^1.0.19",
+		"vitest": "^0.6.0"
+	},
+	"publishConfig": {
+		"directory": "dist"
+	}
+}
