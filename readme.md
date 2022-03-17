@@ -96,3 +96,11 @@ So, why are we using such an involved algorithm to generate reactive emails? Can
 The reason why reactive emails are designed this way is to provide a last-resort in case you lose access to your list of reactive emails. Since reactive emails are not meant to be memorized but rather stored on an email manager, such as a password manager like Bitwarden, it's possible that you may end up losing access to your list of reactive emails (e.g. if you forget your Bitwarden password).
 
 The problem is, many sites depend on your email address for identifying your account. If you lose access to your email, you will end up losing access to many of your accounts with no way to recover them. However, since reactive emails are generated deterministically, you can easily recover the email you used for a certain account as long as you remember the Purpose string you used (which should be the service's name) and your reactive hash secret.
+
+## Application (TODO)
+
+- Easily generate a new reactive email + password combination for a new service. Because I don't want to manage passwords, I'll definitely be integrating with a password manager like Bitwarden.
+
+- How the integration is likely to work is probably just a simple Dock app where you can enter a service name, version number, and your reactive hash secret to generate a new email. The reactive hash secret should be hashed so that you don't accidentally mistype it.
+
+- The application should automate the process of whitelisting the email over at Google Workspace (since that's what makes this whole system work). I'll need to experiment with integrating Puppeteer with Electron.
