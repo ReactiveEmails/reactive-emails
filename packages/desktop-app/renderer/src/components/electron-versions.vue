@@ -14,7 +14,7 @@ const versions = Object.entries(window.versions).sort(([key1], [key2]) =>
 			>: v{{ version }}
 		</li>
 	</ul>
-	<code>packages/renderer/src/components/ElectronVersions.vue</code>
+	<code>renderer/src/components/ElectronVersions.vue</code>
 </template>
 
 <style scoped>

@@ -5,7 +5,9 @@
 		"prepare": "lion-git-hooks",
 		"lint": "pnpm recursive run lint",
 		"prettier": "pnpm recursive run prettier",
-		"tc": "pnpm recursive run tc"
+		"tc": "pnpm recursive run tc",
+		"test": "pnpm recursive run test",
+		"dev": "pnpm run dev --filter=./packages/desktop-app"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^15.0.0",

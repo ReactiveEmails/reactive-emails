@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import type { ElectronApplication } from 'playwright';
 import { _electron as electron } from 'playwright';
 import { afterAll, beforeAll, expect, test } from 'vitest';
-import '../packages/preload/typings/contracts';
+import '../preload/typings/contracts.js';
 
 let electronApp: ElectronApplication;
 
