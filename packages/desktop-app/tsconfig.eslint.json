@@ -7,7 +7,7 @@
 		"renderer",
 		"scripts",
 		"typings",
-		".electron-builder.config.js",
+		".electron-builder.config.cjs",
 		".eslintrc.cjs",
 		"vitest.config.ts"
 	]

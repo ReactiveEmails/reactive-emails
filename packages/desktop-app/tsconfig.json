@@ -5,6 +5,9 @@
 		"module": "ESNext",
 		"types": [
 			"vite/client"
+		],
+		"lib": [
+			"ES2021"
 		]
 	}
 }

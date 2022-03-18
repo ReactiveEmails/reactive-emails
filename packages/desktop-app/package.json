@@ -8,7 +8,7 @@
 		"build:main": "cd ./main && vite build",
 		"build:preload": "cd ./preload && vite build",
 		"build:renderer": "cd ./renderer && vite build",
-		"compile": "cross-env MODE=production npm run build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
+		"compile": "cross-env MODE=production pnpm run build && electron-builder build --config .electron-builder.config.cjs --dir --config.asar=false",
 		"admin-console": "node-ts test/bin/admin-console.ts",
 		"test": "pnpm run test:main && pnpm run test:preload && pnpm run test:renderer && pnpm run test:e2e",
 		"test:e2e": "pnpm run build && vitest run",

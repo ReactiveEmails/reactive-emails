@@ -15,7 +15,7 @@ fs.mkdirSync('context', { recursive: true });
 
 // Initially run browser as headless and check if the user needs to log in
 const headlessBrowser = await puppeteer.launch({
-	headless: false,
+	headless: true,
 	userDataDir: 'context',
 });
 
@@ -135,7 +135,14 @@ async function updateAddressLists(page: Page) {
 	}
 
 	await page.waitForFunction(
-		() => $('div:contains("Manage address lists settings updated")').length > 0
+		() =>
+			// eslint-disable-next-line unicorn/prefer-array-some
+			$('div').filter(function () {
+				return (
+					$(this).text().replaceAll(/\s+/g, ' ') ===
+					'Manage address lists settings updated'
+				);
+			}).length > 0
 	);
 
 	await headlessBrowser.close();
