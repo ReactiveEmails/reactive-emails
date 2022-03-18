@@ -8,9 +8,7 @@ module.exports = defineConfig({
 		'import/no-extraneous-dependencies': [
 			'error',
 			{
-				packageDir: [
-					__dirname,
-					path.resolve(__dirname, '../..')],
+				packageDir: [__dirname, path.resolve(__dirname, '../..')],
 			},
 		],
 	},

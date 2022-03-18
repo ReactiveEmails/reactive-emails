@@ -3,18 +3,9 @@
 	"compilerOptions": {
 		"module": "esnext",
 		"target": "esnext",
-		"types": [
-			"node"
-		],
+		"types": ["node"],
 		"baseUrl": "."
 	},
-	"include": [
-		"src/**/*.ts",
-		"typings/contracts.d.ts",
-		"../typings/**/*.d.ts"
-	],
-	"exclude": [
-		"**/*.spec.ts",
-		"**/*.test.ts"
-	]
+	"include": ["src/**/*.ts", "typings/contracts.d.ts", "../typings/**/*.d.ts"],
+	"exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

@@ -1,27 +1,15 @@
 {
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
-		"types": [
-			"node"
-		],
+		"types": ["node"],
 		"module": "ESNext",
 		"baseUrl": ".",
 		"paths": {
-			"~r/*": [
-				"./src/*"
-			],
-			"~m": [
-				"../main/src/*"
-			],
-			"~p": [
-				"../preload/src/*"
-			],
+			"~r/*": ["./src/*"],
+			"~m": ["../main/src/*"],
+			"~p": ["../preload/src/*"]
 		},
-		"lib": [
-			"ESNext",
-			"dom",
-			"dom.iterable"
-		]
+		"lib": ["ESNext", "dom", "dom.iterable"]
 	},
 	"include": [
 		"src/**/*.vue",
@@ -32,8 +20,5 @@
 		"../preload/typings/contracts.d.ts",
 		"../preload/**/*.ts"
 	],
-	"exclude": [
-		"**/*.spec.ts",
-		"**/*.test.ts"
-	]
+	"exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }
