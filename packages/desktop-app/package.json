@@ -1,5 +1,11 @@
 {
 	"name": "reactive-emails-desktop-app",
+	"description": "A tool to help manage reactive emails.",
+	"author": {
+		"email": "contact@leonzalion.com",
+		"name": "Leon Si",
+		"url": "https://leonzalion.com"
+	},
 	"private": true,
 	"type": "module",
 	"main": "main/dist/index.cjs",

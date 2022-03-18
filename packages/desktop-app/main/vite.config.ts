@@ -45,6 +45,7 @@ const config: UserConfig = {
 				...builtinModules.flatMap((p) => [p, `node:${p}`]),
 			],
 			output: {
+				chunkFileNames: '[name].cjs',
 				entryFileNames: '[name].cjs',
 			},
 		},

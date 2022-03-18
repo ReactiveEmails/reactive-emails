@@ -48,6 +48,7 @@ const config: UserConfig = {
 			],
 			output: {
 				entryFileNames: '[name].cjs',
+				chunkFileNames: '[name].cjs',
 			},
 		},
 		emptyOutDir: true,
