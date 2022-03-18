@@ -41,8 +41,9 @@ const config: UserConfig = {
 		},
 		rollupOptions: {
 			external: [
-				/electron\.cjs/,
 				'electron',
+				'puppeteer-core',
+				'puppeteer-in-electron',
 				...builtinModules.flatMap((p) => [p, `node:${p}`]),
 			],
 			output: {

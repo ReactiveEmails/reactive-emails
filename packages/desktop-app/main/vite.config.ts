@@ -41,6 +41,7 @@ const config: UserConfig = {
 			external: [
 				'electron',
 				'electron-devtools-installer',
+				'uuid', // Needed because global crypto is undefined in electron
 				...builtinModules.flatMap((p) => [p, `node:${p}`]),
 			],
 			output: {

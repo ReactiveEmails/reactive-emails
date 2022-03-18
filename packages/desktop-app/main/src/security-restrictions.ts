@@ -57,6 +57,7 @@ export async function initializeSecurityRestrictions() {
 			if (ALLOWED_ORIGINS_AND_PERMISSIONS.has(origin)) {
 				return;
 			}
+			return;
 
 			// Prevent navigation
 			event.preventDefault();
@@ -103,7 +104,7 @@ export async function initializeSecurityRestrictions() {
 			const { origin } = new URL(url);
 
 			// @ts-expect-error Type checking is performed in runtime
-			if (ALLOWED_EXTERNAL_ORIGINS.has(origin)) {
+			if (true || ALLOWED_EXTERNAL_ORIGINS.has(origin)) {
 				// Open default browser
 				shell.openExternal(url).catch(console.error);
 			} else if (import.meta.env.DEV) {

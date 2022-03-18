@@ -2,10 +2,14 @@
 
 import * as process from 'node:process';
 import { app } from 'electron';
+import pie from 'puppeteer-in-electron';
 import { restoreOrCreateWindow } from './main-window.js';
 import { initializeSecurityRestrictions } from './security-restrictions.js';
+import { initializePuppeteerHandlers } from './utils/puppeteer.js';
 
 async function main() {
+	await pie.initialize(app);
+
 	/**
 	 * Prevent multiple instances
 	 */
@@ -74,6 +78,7 @@ async function main() {
 	}
 
 	await initializeSecurityRestrictions();
+	await initializePuppeteerHandlers();
 }
 
 void main();
