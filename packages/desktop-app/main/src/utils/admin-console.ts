@@ -1,44 +1,33 @@
 import { createRequire } from 'node:module';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import puppeteer from 'puppeteer';
 import $ from 'jquery';
 import pWaitFor from 'p-wait-for';
 import { customAlphabet } from 'nanoid';
-import type { Page } from 'puppeteer';
+import type { Browser, Page } from 'puppeteer-core';
 
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz');
 
 const require = createRequire(import.meta.url);
 
-fs.mkdirSync('context', { recursive: true });
-
-// Initially run browser as headless and check if the user needs to log in
-const headlessBrowser = await puppeteer.launch({
-	headless: true,
-	userDataDir: 'context',
-});
-
-const page = await headlessBrowser.newPage();
-await page.setBypassCSP(true);
-
-console.info('Navigating to Sign in page...');
-await page.goto('https://accounts.google.com/signin/v2');
-
-async function updateAddressLists(page: Page) {
+async function updateAddressLists(headlessPage: Page, email: string) {
 	console.info('Navigating to Address Lists in Admin Console...');
-	await page.goto('https://admin.google.com/ac/apps/gmail/manageaddresslist');
+	await headlessPage.goto(
+		'https://admin.google.com/ac/apps/gmail/manageaddresslist'
+	);
 
 	console.info('Waiting for admin.google.com...');
-	await pWaitFor(() => page.url().startsWith('https://admin.google.com'));
+	await pWaitFor(() =>
+		headlessPage.url().startsWith('https://admin.google.com')
+	);
 
 	console.info('Loading jQuery onto the page...');
-	await page.evaluate(
+	await headlessPage.evaluate(
 		fs.readFileSync(path.join(require.resolve('jquery')), 'utf8')
 	);
 
 	const clickInPage = async (elementId: string) => {
-		await page.evaluate((elementId: string) => {
+		await headlessPage.evaluate((elementId: string) => {
 			// eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
 			(document.querySelector(`#${elementId}`) as HTMLElement).click();
 		}, elementId);
@@ -47,7 +36,7 @@ async function updateAddressLists(page: Page) {
 	{
 		console.info('Finding the email address list edit button...');
 		const elementId = nanoid();
-		await page.waitForFunction(
+		await headlessPage.waitForFunction(
 			(elementId: string) =>
 				$('tr:contains("Service Emails")')
 					.find('a:contains("Edit")')
@@ -61,7 +50,7 @@ async function updateAddressLists(page: Page) {
 	{
 		console.info('Finding the bulk add addresses button...');
 		const elementId = nanoid();
-		await page.waitForFunction(
+		await headlessPage.waitForFunction(
 			(elementId: string) =>
 				$('div[role="button"]')
 					.filter(function () {
@@ -80,7 +69,7 @@ async function updateAddressLists(page: Page) {
 	{
 		console.info('Finding the email address textbox...');
 		const elementId = nanoid();
-		await page.waitForFunction(
+		await headlessPage.waitForFunction(
 			(elementId: string) =>
 				$('textarea[aria-label="Email address or domain name:"]').attr(
 					'id',
@@ -90,17 +79,23 @@ async function updateAddressLists(page: Page) {
 			elementId
 		);
 
-		await page.evaluate((elementId: string) => {
-			// eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
-			(document.querySelector(`#${elementId}`) as HTMLTextAreaElement).value =
-				'myemail@leonzalion.com';
-		}, elementId);
+		await headlessPage.evaluate(
+			(elementId: string, email: string) => {
+				// eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
+				const element = document.querySelector(
+					`#${elementId}`
+				) as HTMLTextAreaElement;
+				element.value = email;
+			},
+			elementId,
+			email
+		);
 	}
 
 	{
 		console.info('Finding the add addresses button...');
 		const elementId = nanoid();
-		await page.waitForFunction(
+		await headlessPage.waitForFunction(
 			(elementId: string) =>
 				$('div[role="dialog"][aria-label*="Bulk-add addresses"]')
 					.eq(0)
@@ -120,7 +115,7 @@ async function updateAddressLists(page: Page) {
 	{
 		console.info('Pressing the Save button...');
 		const elementId = nanoid();
-		await page.waitForFunction(
+		await headlessPage.waitForFunction(
 			(elementId: string) =>
 				$('div[role="dialog"][aria-label*="Edit address list"]')
 					.eq(0)
@@ -133,34 +128,45 @@ async function updateAddressLists(page: Page) {
 		await clickInPage(elementId);
 	}
 
-	await page.waitForFunction(
-		() => $('div:contains("Manage address lists settings updated"').length > 0
+	await headlessPage.waitForFunction(
+		() => $('div:contains("Manage address lists settings updated")').length > 0
 	);
-
-	await headlessBrowser.close();
 }
 
-if (page.url().startsWith('https://myaccount.google.com')) {
-	// User is already logged in, we can auto-update the address lists
-	await updateAddressLists(page);
-} else {
-	const browser = await puppeteer.launch({
-		headless: false,
-		userDataDir: 'context',
-	});
+type AddEmailToAdminConsoleProps = {
+	email: string;
+	headfullPage: Page;
+	headlessPage: Page;
+	browser: Browser;
+};
+export async function addEmailToAdminConsole({
+	email,
+	headfullPage,
+	headlessPage,
+	browser,
+}: AddEmailToAdminConsoleProps) {
+	fs.mkdirSync('context', { recursive: true });
 
-	const page = await browser.newPage();
-	await page.goto('https://accounts.google.com/signin/v2');
+	await headlessPage.setBypassCSP(true);
 
-	// Wait for the user to log in
-	console.info('Waiting for myaccount.google.com...');
-	await pWaitFor(() => page.url().startsWith('https://myaccount.google.com'));
+	console.info('Navigating to Sign in page...');
+	await headlessPage.goto('https://accounts.google.com/signin/v2');
 
-	await browser.close();
+	if (headlessPage.url().startsWith('https://myaccount.google.com')) {
+		// User is already logged in, we can auto-update the address lists
+		await updateAddressLists(headlessPage, email);
+	} else {
+		await headfullPage.goto('https://accounts.google.com/signin/v2');
 
-	// Create a new page with the headless browser to update the address lists
-	const headlessPage = await headlessBrowser.newPage();
+		// Wait for the user to log in
+		console.info('Waiting for myaccount.google.com...');
+		await pWaitFor(() =>
+			headfullPage.url().startsWith('https://myaccount.google.com')
+		);
 
-	await updateAddressLists(headlessPage);
-	await headlessBrowser.close();
+		await browser.close();
+
+		// Create a new page with the headless browser to update the address lists
+		await updateAddressLists(headlessPage, email);
+	}
 }
