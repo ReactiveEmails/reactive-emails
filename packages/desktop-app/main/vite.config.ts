@@ -32,7 +32,8 @@ const config: UserConfig = {
 		target: `node${node}`,
 		outDir: 'dist',
 		assetsDir: '.',
-		minify: process.env.MODE !== 'development',
+		// minify: process.env.MODE !== 'development',
+		minify: false,
 		lib: {
 			entry: 'src/index.ts',
 			formats: ['cjs'],

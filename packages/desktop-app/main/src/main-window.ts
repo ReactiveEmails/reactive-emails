@@ -38,7 +38,7 @@ async function createWindow() {
 	const pageUrl =
 		import.meta.env.DEV && import.meta.env.VITE_DEV_SERVER_URL !== undefined
 			? import.meta.env.VITE_DEV_SERVER_URL
-			: new URL('../../renderer/dist/index.html', import.meta.url).toString();
+			: 'file://' + join(import.meta.url, '../../renderer/dist/index.html');
 
 	await browserWindow.loadURL(pageUrl);
 

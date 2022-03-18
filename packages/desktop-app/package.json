@@ -39,7 +39,7 @@
 		"p-wait-for": "^4.1.0",
 		"puppeteer-core": "^13.5.1",
 		"puppeteer-in-electron": "^3.0.5",
-		"reactive-emails": "link:../utilities/dist",
+		"reactive-emails": "^0.0.2",
 		"uuid": "^8.3.2",
 		"vue": "3.2.31"
 	},
