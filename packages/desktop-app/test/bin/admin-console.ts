@@ -24,15 +24,11 @@ const page = pages[0]!;
 await page.setBypassCSP(true);
 
 console.info('Navigating to Sign in page...');
-await page.goto('https://accounts.google.com/signin/v2', {
-	waitUntil: 'networkidle2',
-});
+await page.goto('https://accounts.google.com/signin/v2');
 
 async function updateAddressLists(page: Page) {
 	console.info('Navigating to Address Lists in Admin Console...');
-	await page.goto('https://admin.google.com/ac/apps/gmail/manageaddresslist', {
-		waitUntil: 'networkidle2',
-	});
+	await page.goto('https://admin.google.com/ac/apps/gmail/manageaddresslist');
 
 	console.info('Waiting for admin.google.com...');
 	await pWaitFor(() => page.url().startsWith('https://admin.google.com'));
@@ -159,9 +155,7 @@ if (page.url().startsWith('https://myaccount.google.com')) {
 
 		const pages = await browser.pages();
 		const page = pages[0]!;
-		await page.goto('https://accounts.google.com/signin/v2', {
-			waitUntil: 'networkidle2',
-		});
+		await page.goto('https://accounts.google.com/signin/v2');
 
 		// Wait for the user to log in
 		console.info('Waiting for myaccount.google.com...');
@@ -172,7 +166,7 @@ if (page.url().startsWith('https://myaccount.google.com')) {
 		{
 			const headlessBrowser = await puppeteer.launch({
 				headless: false, // TODO
-				userDataDir: 'context',
+				// userDataDir: 'context',
 			});
 
 			// Create a new page with the headless browser to update the address lists
