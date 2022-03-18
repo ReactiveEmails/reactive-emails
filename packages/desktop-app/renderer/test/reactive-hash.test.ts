@@ -1,7 +1,7 @@
+import type { BinaryLike } from 'node:crypto';
 import { mount } from '@vue/test-utils';
 import { expect, test, vi } from 'vitest';
 import ReactiveHash from '../src/components/ReactiveHash.vue';
-import type { BinaryLike } from 'crypto';
 
 /**
  * Mock expected global api exposed by {@link module:preload}

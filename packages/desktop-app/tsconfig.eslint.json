@@ -4,6 +4,7 @@
 		"main",
 		"preload",
 		"renderer",
+		"scripts",
 		"typings",
 		".electron-builder.config.js",
 		".eslintrc.cjs",

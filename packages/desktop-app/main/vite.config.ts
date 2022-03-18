@@ -6,7 +6,7 @@ import type { UserConfig } from 'vite';
 
 const { node } = JSON.parse(
 	fs.readFileSync(
-		join(import.meta.url, '../../.electron-vendors.cache.json'),
+		join(import.meta.url, '../.electron-vendors.cache.json'),
 		'utf8'
 	)
 ) as { node: string };

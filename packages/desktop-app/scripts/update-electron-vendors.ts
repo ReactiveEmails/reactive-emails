@@ -35,7 +35,7 @@ async function updateVendors() {
 
 	return Promise.all([
 		fs.promises.writeFile(
-			'./.electron-vendors.cache.json',
+			'../.electron-vendors.cache.json',
 			JSON.stringify(
 				{
 					chrome: chromeMajorVersion,
