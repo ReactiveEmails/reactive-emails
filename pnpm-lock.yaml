@@ -35,6 +35,7 @@ importers:
   packages/desktop-app:
     specifiers:
       '@rollup/plugin-inject': ^4.0.4
+      '@types/jquery': ^3.5.14
       '@vitejs/plugin-vue': 2.2.4
       '@vue/test-utils': 2.0.0-rc.17
       cross-env: 7.0.3
@@ -44,7 +45,9 @@ importers:
       electron-devtools-installer: 3.2.0
       electron-updater: 4.6.5
       happy-dom: 2.46.0
+      jquery: ^3.6.0
       onetime: ^6.0.0
+      p-wait-for: ^4.1.0
       puppeteer: ^13.5.1
       puppeteer-core: ^13.5.1
       puppeteer-in-electron: ^3.0.5
@@ -60,7 +63,9 @@ importers:
     dependencies:
       desm: 1.2.0
       electron-updater: 4.6.5
+      jquery: 3.6.0
       onetime: 6.0.0
+      p-wait-for: 4.1.0
       puppeteer: 13.5.1
       puppeteer-core: 13.5.1
       puppeteer-in-electron: 3.0.5
@@ -69,6 +74,7 @@ importers:
       vue: 3.2.31
     devDependencies:
       '@rollup/plugin-inject': 4.0.4_rollup@2.70.0
+      '@types/jquery': 3.5.14
       '@vitejs/plugin-vue': 2.2.4_vite@2.8.6+vue@3.2.31
       '@vue/test-utils': 2.0.0-rc.17_vue@3.2.31
       cross-env: 7.0.3
@@ -779,6 +785,12 @@ packages:
     resolution: {integrity: sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==}
     dev: true
 
+  /@types/jquery/3.5.14:
+    resolution: {integrity: sha512-X1gtMRMbziVQkErhTQmSe2jFwwENA/Zr+PprCkF63vFq+Yt5PZ4AlKqgmeNlwgn7dhsXEK888eIW2520EpC+xg==}
+    dependencies:
+      '@types/sizzle': 2.3.3
+    dev: true
+
   /@types/json-schema/7.0.9:
     resolution: {integrity: sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==}
     dev: true
@@ -878,6 +890,10 @@ packages:
     resolution: {integrity: sha512-amxKgPy6WJTKuw8mpUwjX2BSxuBtBmZfRwIUDIuPJKNwGN8CWDli8JTg5ONTWOtcTkHIstvT7oAhhYXqEjStHQ==}
     dependencies:
       '@types/node': 17.0.21
+    dev: true
+
+  /@types/sizzle/2.3.3:
+    resolution: {integrity: sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==}
     dev: true
 
   /@types/uuid/3.4.10:
@@ -4428,6 +4444,10 @@ packages:
       minimatch: 3.1.2
     dev: true
 
+  /jquery/3.6.0:
+    resolution: {integrity: sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==}
+    dev: false
+
   /js-stringify/1.0.2:
     resolution: {integrity: sha1-Fzb939lyTyijaCrcYjCufk6Weds=}
     dev: true
@@ -5363,7 +5383,6 @@ packages:
   /p-timeout/5.0.2:
     resolution: {integrity: sha512-sEmji9Yaq+Tw+STwsGAE56hf7gMy9p0tQfJojIAamB7WHJYJKf1qlsg9jqBWG8q9VCxKPhZaP/AcXwEoBcYQhQ==}
     engines: {node: '>=12'}
-    dev: true
 
   /p-try/1.0.0:
     resolution: {integrity: sha1-y8ec26+P1CKOE/Yh8rGiN8GyB7M=}
@@ -5373,6 +5392,13 @@ packages:
   /p-try/2.2.0:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
+
+  /p-wait-for/4.1.0:
+    resolution: {integrity: sha512-i8nE5q++9h8oaQHWltS1Tnnv4IoMDOlqN7C0KFG2OdbK0iFJIt6CROZ8wfBM+K4Pxqfnq4C4lkkpXqTEpB5DZw==}
+    engines: {node: '>=12'}
+    dependencies:
+      p-timeout: 5.0.2
+    dev: false
 
   /package-json/6.5.0:
     resolution: {integrity: sha512-k3bdm2n25tkyxcjSKzB5x8kfVxlMdgsbPr0GkZcwHsLpba6cBjqCt1KlcChKEvxHIcTB1FVMuwoijZ26xex5MQ==}

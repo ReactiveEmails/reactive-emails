@@ -9,7 +9,7 @@
 		"build:preload": "cd ./preload && vite build",
 		"build:renderer": "cd ./renderer && vite build",
 		"compile": "cross-env MODE=production npm run build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
-		"test:puppeteer": "vitest run -r test",
+		"admin-console": "node-ts test/bin/admin-console.ts",
 		"test": "pnpm run test:main && pnpm run test:preload && pnpm run test:renderer && pnpm run test:e2e",
 		"test:e2e": "pnpm run build && vitest run",
 		"test:main": "vitest run -r main --passWithNoTests",
@@ -26,6 +26,7 @@
 	},
 	"devDependencies": {
 		"@rollup/plugin-inject": "^4.0.4",
+		"@types/jquery": "^3.5.14",
 		"@vitejs/plugin-vue": "2.2.4",
 		"@vue/test-utils": "2.0.0-rc.17",
 		"cross-env": "7.0.3",
@@ -43,7 +44,9 @@
 	"dependencies": {
 		"desm": "^1.2.0",
 		"electron-updater": "4.6.5",
+		"jquery": "^3.6.0",
 		"onetime": "^6.0.0",
+		"p-wait-for": "^4.1.0",
 		"puppeteer": "^13.5.1",
 		"puppeteer-core": "^13.5.1",
 		"puppeteer-in-electron": "^3.0.5",
