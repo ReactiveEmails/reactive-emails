@@ -6,6 +6,7 @@ const rawString = ref('Hello World');
  * window.nodeCrypto was exposed from {@link module:preload}
  */
 const hashedString = computed(() =>
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
 	window.nodeCrypto.sha256sum(rawString.value)
 );
 </script>

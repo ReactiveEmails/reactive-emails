@@ -66,7 +66,7 @@ const setupMainPackageWatcher = async ({
 		const path = '/';
 		process.env.VITE_DEV_SERVER_URL = `${protocol}//${
 			host as string
-		}:${port}${path}`;
+		}:${port!}${path}`;
 	}
 
 	const logger = createLogger(LOG_LEVEL, {

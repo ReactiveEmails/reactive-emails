@@ -1,4 +1,3 @@
-import { URL } from 'node:url';
 import { BrowserWindow } from 'electron';
 import { join } from 'desm';
 

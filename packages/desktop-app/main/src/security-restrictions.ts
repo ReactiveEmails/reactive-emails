@@ -41,6 +41,8 @@ export async function initializeSecurityRestrictions() {
 	 */
 	const ALLOWED_EXTERNAL_ORIGINS = new Set<`https://${string}`>([
 		'https://github.com',
+		'https://accounts.google.com',
+		'https://admin.google.com',
 	]);
 
 	app.on('web-contents-created', (_, contents) => {
@@ -57,7 +59,6 @@ export async function initializeSecurityRestrictions() {
 			if (ALLOWED_ORIGINS_AND_PERMISSIONS.has(origin)) {
 				return;
 			}
-			return;
 
 			// Prevent navigation
 			event.preventDefault();
@@ -104,7 +105,7 @@ export async function initializeSecurityRestrictions() {
 			const { origin } = new URL(url);
 
 			// @ts-expect-error Type checking is performed in runtime
-			if (true || ALLOWED_EXTERNAL_ORIGINS.has(origin)) {
+			if (ALLOWED_EXTERNAL_ORIGINS.has(origin)) {
 				// Open default browser
 				shell.openExternal(url).catch(console.error);
 			} else if (import.meta.env.DEV) {
@@ -127,7 +128,7 @@ export async function initializeSecurityRestrictions() {
 			if (!ALLOWED_ORIGINS_AND_PERMISSIONS.has(origin)) {
 				if (import.meta.env.DEV) {
 					console.warn(
-						`A webview tried to attach ${params.src}, but was blocked.`
+						`A webview tried to attach ${params.src!}, but was blocked.`
 					);
 				}
 
