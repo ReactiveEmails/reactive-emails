@@ -15,24 +15,19 @@ fs.mkdirSync('context', { recursive: true });
 
 // Initially run browser as headless and check if the user needs to log in
 const headlessBrowser = await puppeteer.launch({
-	headless: false,
+	headless: true,
 	userDataDir: 'context',
 });
 
-const pages = await headlessBrowser.pages();
-const page = pages[0]!;
+const page = await headlessBrowser.newPage();
 await page.setBypassCSP(true);
 
 console.info('Navigating to Sign in page...');
-await page.goto('https://accounts.google.com/signin/v2', {
-	waitUntil: 'networkidle2',
-});
+await page.goto('https://accounts.google.com/signin/v2');
 
 async function updateAddressLists(page: Page) {
 	console.info('Navigating to Address Lists in Admin Console...');
-	await page.goto('https://admin.google.com/ac/apps/gmail/manageaddresslist', {
-		waitUntil: 'networkidle2',
-	});
+	await page.goto('https://admin.google.com/ac/apps/gmail/manageaddresslist');
 
 	console.info('Waiting for admin.google.com...');
 	await pWaitFor(() => page.url().startsWith('https://admin.google.com'));
@@ -139,7 +134,7 @@ async function updateAddressLists(page: Page) {
 	}
 
 	await page.waitForFunction(
-		() => $('div:contains("Manage address lists settings updated")').length > 0
+		() => $('div:contains("Manage address lists settings updated"').length > 0
 	);
 
 	await headlessBrowser.close();
@@ -149,41 +144,23 @@ if (page.url().startsWith('https://myaccount.google.com')) {
 	// User is already logged in, we can auto-update the address lists
 	await updateAddressLists(page);
 } else {
+	const browser = await puppeteer.launch({
+		headless: false,
+		userDataDir: 'context',
+	});
+
+	const page = await browser.newPage();
+	await page.goto('https://accounts.google.com/signin/v2');
+
+	// Wait for the user to log in
+	console.info('Waiting for myaccount.google.com...');
+	await pWaitFor(() => page.url().startsWith('https://myaccount.google.com'));
+
+	await browser.close();
+
+	// Create a new page with the headless browser to update the address lists
+	const headlessPage = await headlessBrowser.newPage();
+
+	await updateAddressLists(headlessPage);
 	await headlessBrowser.close();
-
-	{
-		const browser = await puppeteer.launch({
-			headless: false,
-			userDataDir: 'context',
-		});
-
-		const pages = await browser.pages();
-		const page = pages[0]!;
-		await page.goto('https://accounts.google.com/signin/v2', {
-			waitUntil: 'networkidle2',
-		});
-
-		// Wait for the user to log in
-		console.info('Waiting for myaccount.google.com...');
-		await pWaitFor(() => page.url().startsWith('https://myaccount.google.com'));
-
-		await browser.close();
-
-		{
-			const headlessBrowser = await puppeteer.launch({
-				headless: false, // TODO
-				userDataDir: 'context',
-			});
-
-			// Create a new page with the headless browser to update the address lists
-			const headlessPages = await headlessBrowser.pages();
-			const headlessPage = headlessPages[0]!;
-			await headlessPage.setBypassCSP(true);
-
-			await updateAddressLists(headlessPage);
-			await headlessBrowser.close();
-		}
-	}
 }
-
-await headlessBrowser.close();

@@ -25,3 +25,4 @@ export async function initializePuppeteerHandlers() {
 export async function openGoogleWorkspaceLogin(page: Page) {
 	await page.goto('https://admin.google.com/ac/apps/gmail/routing');
 }
+
