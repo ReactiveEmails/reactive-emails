@@ -46,6 +46,8 @@ const config: UserConfig = {
 				...builtinModules.flatMap((p) => [p, `node:${p}`]),
 			],
 			output: {
+				// needed for nanoid
+				banner: 'var crypto = require("crypto").webcrypto',
 				chunkFileNames: '[name].cjs',
 				entryFileNames: '[name].cjs',
 			},

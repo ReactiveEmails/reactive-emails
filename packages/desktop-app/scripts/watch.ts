@@ -102,7 +102,10 @@ const setupMainPackageWatcher = async ({
 			});
 
 			// Stops the watch script when the application has been quit
-			void spawnProcess.on('exit', process.exit);
+			void spawnProcess.on('exit', () => {
+				console.log('App exited.');
+				process.exit(0);
+			});
 		},
 	});
 };

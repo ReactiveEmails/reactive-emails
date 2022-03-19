@@ -40,7 +40,6 @@ export async function initializeSecurityRestrictions() {
 	 * >
 	 */
 	const ALLOWED_EXTERNAL_ORIGINS = new Set<`https://${string}`>([
-		'https://github.com',
 		'https://accounts.google.com',
 		'https://admin.google.com',
 	]);
@@ -56,7 +55,10 @@ export async function initializeSecurityRestrictions() {
 		 */
 		contents.on('will-navigate', (event, url) => {
 			const { origin } = new URL(url);
-			if (ALLOWED_ORIGINS_AND_PERMISSIONS.has(origin)) {
+			if (
+				ALLOWED_EXTERNAL_ORIGINS.has(origin as any) ||
+				ALLOWED_ORIGINS_AND_PERMISSIONS.has(origin)
+			) {
 				return;
 			}
 
