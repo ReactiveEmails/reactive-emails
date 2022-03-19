@@ -18,5 +18,5 @@
 		"../typings/**/*.d.ts",
 		"typings/contracts.d.ts",
 		"../preload/**/*.ts"
-	],
+	]
 }
