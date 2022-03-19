@@ -2,9 +2,11 @@
 
 interface Exposed {
 	readonly nodeCrypto: Readonly<
-		typeof import('../src/node-crypto.js').nodeCrypto
+		typeof import('../../preload/src/node-crypto.js').nodeCrypto
 	>;
-	readonly versions: Readonly<typeof import('../src/versions.js').versions>;
+	readonly versions: Readonly<
+		typeof import('../../preload/src/versions.js').versions
+	>;
 }
 
 interface Window extends Exposed {}

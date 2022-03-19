@@ -14,11 +14,9 @@
 	"include": [
 		"src/**/*.vue",
 		"src/**/*.ts",
-		"src/**/*.tsx",
 		"typings/**/*.d.ts",
 		"../typings/**/*.d.ts",
-		"../preload/typings/contracts.d.ts",
+		"typings/contracts.d.ts",
 		"../preload/**/*.ts"
 	],
-	"exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }
