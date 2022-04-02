@@ -1,6 +1,7 @@
 {
 	"include": [
-		"packages",
+		"src",
+		"test",
 		"scripts",
 		".eslintrc.cjs",
 		".markdownlint.cjs",
