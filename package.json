@@ -28,7 +28,7 @@
 		"sha.js": "^2.4.11"
 	},
 	"devDependencies": {
-		"@leonzalion/configs": "^1.2.3",
+		"@leonzalion/configs": "^1.2.5",
 		"@types/sha.js": "^2.4.0",
 		"base-x": "^4.0.0",
 		"desm": "^1.2.0",
