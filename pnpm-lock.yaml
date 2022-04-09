@@ -5168,12 +5168,15 @@ packages:
     hasBin: true
     dependencies:
       '@eslint/eslintrc': 1.2.1
+      '@typescript-eslint/eslint-plugin': 5.18.0_0dd9be2ba5ed9805045f3fec8be848f5
+      '@typescript-eslint/parser': 5.18.0_eslint@8.13.0+typescript@4.6.3
       arrify: 3.0.0
       cosmiconfig: 7.0.1
       define-lazy-prop: 3.0.0
       eslint: 8.13.0
       eslint-config-prettier: 8.5.0_eslint@8.13.0
       eslint-config-xo: 0.40.0_eslint@8.13.0
+      eslint-config-xo-typescript: 0.50.0_a09ea4fbdcb25b638d0cf76b7de6258b
       eslint-formatter-pretty: 4.1.0
       eslint-import-resolver-webpack: 0.13.2_7f5a2a74ac610a03e7ee1903121a979f
       eslint-plugin-ava: 13.2.0_eslint@8.13.0

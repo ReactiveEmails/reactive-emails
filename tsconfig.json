@@ -3,8 +3,15 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"paths": {
-			"~/*": ["./src/*"]
-		}
+			"~/*": [
+				"./src/*"
+			]
+		},
+		"lib": [
+			"ES2021"
+		]
 	},
-	"include": ["./"]
+	"include": [
+		"./"
+	]
 }
