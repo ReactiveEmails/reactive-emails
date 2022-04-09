@@ -1,7 +1,7 @@
 import shajs from 'sha.js';
 
 export const defaultReactiveHashCharacterSet = 'bdhmnqvz';
-const defaultReactiveHashLength = 5;
+export const defaultReactiveHashLength = 5;
 
 type GenerateReactiveHashProps = {
 	purpose: string;
