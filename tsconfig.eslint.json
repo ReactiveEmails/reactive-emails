@@ -1,11 +1,4 @@
 {
-	"include": [
-		"src",
-		"test",
-		"scripts",
-		".eslintrc.cjs",
-		".markdownlint.cjs",
-		".nano-staged.mjs",
-		"vitest.config.ts"
-	]
+	"extends": "./tsconfig.json",
+	"include": ["src", "test", "scripts", ".eslintrc.cjs", "vitest.config.ts"]
 }
