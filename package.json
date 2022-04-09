@@ -5,9 +5,9 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/leonzalion/reactive-emails.git"
+		"url": "https://github.com/ReactiveEmails/reactive-emails.git"
 	},
-	"homepage": "https://github.com/leonzalion/reactive-emails#readme",
+	"homepage": "https://github.com/ReactiveEmails/reactive-emails#readme",
 	"author": {
 		"name": "Leon Si",
 		"email": "contact@leonzalion.com",
