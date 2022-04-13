@@ -8,5 +8,5 @@
 		},
 		"lib": ["ES2021"]
 	},
-	"include": ["src"]
+	"include": ["./src"]
 }
