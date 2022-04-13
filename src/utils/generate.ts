@@ -10,7 +10,25 @@ type GenerateReactiveHashProps = {
 	characterSet?: string;
 	length?: number;
 	raw?: boolean;
+
+	/**
+		If false, an array of digits will be returned instead of the resulting string from mapping the digits to characters using the character set.
+
+		@default true
+	*/
+	mapCharacters?: boolean;
 };
+
+export function generateReactiveHash(
+	props: Omit<GenerateReactiveHashProps, 'mapCharacters'> & {
+		mapCharacters?: true;
+	}
+): string;
+export function generateReactiveHash(
+	props: Omit<GenerateReactiveHashProps, 'mapCharacters'> & {
+		mapCharacters: false;
+	}
+): number[];
 export function generateReactiveHash({
 	purpose,
 	versionNumber,
@@ -18,7 +36,8 @@ export function generateReactiveHash({
 	characterSet,
 	length,
 	raw,
-}: GenerateReactiveHashProps) {
+	mapCharacters,
+}: GenerateReactiveHashProps): number[] | string {
 	const sha256Hash = shajs('sha256')
 		.update(`${purpose}${versionNumber}${secret}`)
 		.digest('hex');
@@ -40,6 +59,11 @@ export function generateReactiveHash({
 		lastDigits.push((rawReactiveHashNumber / base ** i) % base);
 	}
 
+	mapCharacters = mapCharacters ?? true;
+	if (!mapCharacters) {
+		return lastDigits.map((digit) => Number(digit));
+	}
+
 	const reactiveHash = lastDigits
 		.map((digit) => reactiveHashCharacterSet.charAt(Number(digit)))
 		.join('');
@@ -54,7 +78,7 @@ type GenerateReactiveEmailProps = {
 	reactiveHashSecret: string;
 	reactiveHashOptions?: Omit<
 		GenerateReactiveHashProps,
-		'purpose' | 'versionNumber' | 'secret'
+		'purpose' | 'versionNumber' | 'secret' | 'mapCharacters' | 'raw'
 	>;
 };
 export function generateReactiveEmail({

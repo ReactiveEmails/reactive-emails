@@ -7,4 +7,9 @@ export default defineConfig({
 			'~': join(import.meta.url, 'src'),
 		},
 	},
+	test: {
+		deps: {
+			inline: ['vitest-mock-process'],
+		},
+	},
 });

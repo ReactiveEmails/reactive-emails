@@ -1,4 +1,7 @@
+import mockArgv from 'mock-argv';
 import { expect, test } from 'vitest';
+import { mockProcessStdout } from 'vitest-mock-process';
+
 import {
 	defaultReactiveHashCharacterSet,
 	generateReactiveEmail,
@@ -46,5 +49,16 @@ test('generates correct reactive email', () => {
 				length: defaultReactiveHashLength,
 			},
 		})
+	);
+});
+
+test('cli works', async () => {
+	const mockStdout = mockProcessStdout();
+	await mockArgv(
+		['--purpose', 'github', '--secret', 'mysecret', '--version-number', '1'],
+		async () => {
+			await import('~/bin/cli.js');
+			expect(mockStdout).toHaveBeenCalledWith('github1hzvnz@example.com');
+		}
 	);
 });
