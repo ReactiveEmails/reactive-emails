@@ -9,6 +9,7 @@ type GenerateReactiveHashProps = {
 	secret: string;
 	characterSet?: string;
 	length?: number;
+	raw?: boolean;
 };
 export function generateReactiveHash({
 	purpose,
@@ -16,12 +17,17 @@ export function generateReactiveHash({
 	secret,
 	characterSet,
 	length,
+	raw,
 }: GenerateReactiveHashProps) {
-	const rawReactiveHashNumber = BigInt(
-		`0x${shajs('sha256')
-			.update(`${purpose}${versionNumber}${secret}`)
-			.digest('hex')}`
-	);
+	const sha256Hash = shajs('sha256')
+		.update(`${purpose}${versionNumber}${secret}`)
+		.digest('hex');
+
+	if (raw) {
+		return sha256Hash;
+	}
+
+	const rawReactiveHashNumber = BigInt(`0x${sha256Hash}`);
 
 	const reactiveHashCharacterSet =
 		characterSet ?? defaultReactiveHashCharacterSet;
