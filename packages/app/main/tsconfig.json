@@ -10,5 +10,6 @@
 			"~p/*": ["../preload/src/*"]
 		}
 	},
-	"include": ["./src", "./test"]
+	"include": ["./src"],
+	"exclude": ["./test"]
 }

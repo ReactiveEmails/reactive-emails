@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/no-process-exit */
-
 import { app } from 'electron';
 import * as process from 'node:process';
 import pie from 'puppeteer-in-electron';
