@@ -1,7 +1,8 @@
 {
 	"name": "@reactive-emails/monorepo",
 	"scripts": {
-		"prepare": "lionconfig"
+		"prepare": "lionconfig",
+		"build:website": "pnpm --filter=@reactive-emails/website build"
 	},
 	"devDependencies": {
 		"lionconfig": "^1.7.17",

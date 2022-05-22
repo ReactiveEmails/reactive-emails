@@ -1,12 +1,12 @@
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 import vue from '@vitejs/plugin-vue';
 import { join } from 'desm';
-import { getProjectDir } from 'lion-system';
+import { getProjectDir } from 'lionconfig';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type { Plugin } from 'rollup';
+import jsImports from 'rollup-plugin-js-imports';
 import { defineConfig } from 'vite';
-import jsImports from 'vite-plugin-js-imports';
 import WindiCSS from 'vite-plugin-windicss';
 
 function readmeLoader(): Plugin {
