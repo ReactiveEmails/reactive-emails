@@ -1,0 +1,10 @@
+{
+	"name": "@reactive-emails/monorepo",
+	"scripts": {
+		"prepare": "lionconfig"
+	},
+	"devDependencies": {
+		"lionconfig": "^1.7.17",
+		"typescript": "^4.6.4"
+	}
+}

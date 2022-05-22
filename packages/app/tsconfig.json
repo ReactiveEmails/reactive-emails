@@ -1,0 +1,7 @@
+{
+	"extends": "lionconfig/tsconfig.json",
+	"compilerOptions": {
+		"module": "CommonJS"
+	},
+	"include": ["./scripts"]
+}

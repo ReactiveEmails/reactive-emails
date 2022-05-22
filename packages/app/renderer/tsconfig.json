@@ -1,0 +1,16 @@
+{
+	"extends": "lionconfig/tsconfig.json",
+	"compilerOptions": {
+		"outDir": "dist",
+		"baseUrl": ".",
+		"jsx": "preserve",
+		"paths": {
+			"~r/*": ["./src/*"],
+			"~m/*": ["../main/src/*"],
+			"~p/*": ["../preload/src/*"]
+		},
+		"lib": ["ESNext", "dom", "dom.iterable"],
+		"types": ["./typings/env", "./typings/global", "vite/client"]
+	},
+	"include": ["./src"]
+}

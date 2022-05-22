@@ -1,0 +1,14 @@
+{
+	"extends": "lionconfig/tsconfig.json",
+	"compilerOptions": {
+		"outDir": "dist",
+		"module": "ES2020",
+		"types": ["node", "../typings/env"],
+		"baseUrl": ".",
+		"paths": {
+			"~m/*": ["./src/*"],
+			"~p/*": ["../preload/src/*"]
+		}
+	},
+	"include": ["./src", "./test"]
+}

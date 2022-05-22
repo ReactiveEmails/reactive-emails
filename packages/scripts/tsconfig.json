@@ -1,0 +1,4 @@
+{
+	"extends": "lionconfig/tsconfig.json",
+	"include": ["./"]
+}
