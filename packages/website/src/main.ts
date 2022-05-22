@@ -9,8 +9,8 @@ import { plugin as VueInputAutowidth } from 'vue-input-autowidth';
 import App from './app.vue';
 
 const app = createApp(App);
-app.use(VueInputAutowidth);
-app.use(Quasar, {
+app.use(VueInputAutowidth as any);
+app.use(Quasar as any, {
 	plugins: {
 		Notify,
 	},
