@@ -15,5 +15,5 @@ app.use(Quasar as any, {
 		Notify,
 	},
 });
-app.use(SimpleVueIcon);
+app.use(SimpleVueIcon as any);
 app.mount('#app');
