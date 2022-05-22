@@ -19,14 +19,10 @@
 	},
 	"exports": "./src/index.ts",
 	"scripts": {
-		"prepare": "lion-git-hooks",
+		"preinstall": "pnpm build",
 		"release": "lionp",
 		"build": "node-ts ./scripts/build.ts",
-		"start": "node-ts ./test/bin/gen-reactive-email.ts",
-		"test": "vitest run",
-		"lint": "eslint --cache --fix .",
-		"prettier": "prettier --write .",
-		"tc": "tsc --noEmit"
+		"start": "node-ts ./test/bin/gen-reactive-email.ts"
 	},
 	"dependencies": {
 		"commander": "^9.1.0",
