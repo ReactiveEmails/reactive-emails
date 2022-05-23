@@ -61,7 +61,7 @@ export function generateReactiveHash({
 
 	mapCharacters = mapCharacters ?? true;
 	if (!mapCharacters) {
-		return lastDigits.map((digit) => Number(digit));
+		return lastDigits.map(Number);
 	}
 
 	const reactiveHash = lastDigits
@@ -94,5 +94,5 @@ export function generateReactiveEmail({
 		secret: reactiveHashSecret,
 		...reactiveHashOptions,
 	});
-	return `${purpose}${versionNumber}${reactiveHash}@${domain}`;
+	return `${purpose}.${versionNumber}.${reactiveHash}@${domain}`;
 }
