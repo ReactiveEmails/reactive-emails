@@ -209,7 +209,7 @@ async function copyReactiveEmailToClipboard() {
 						<q-checkbox
 							v-model="customDomain"
 							size="xs"
-							@update:modelValue="hasCustomDomainBeenToggled = true"
+							@update:model-value="hasCustomDomainBeenToggled = true"
 							@mousedown.prevent
 						>
 						</q-checkbox>
