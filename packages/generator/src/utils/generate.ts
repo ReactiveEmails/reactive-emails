@@ -39,7 +39,7 @@ export function generateReactiveHash({
 	mapCharacters,
 }: GenerateReactiveHashProps): number[] | string {
 	const sha256Hash = shajs('sha256')
-		.update(`${purpose}${versionNumber}${secret}`)
+		.update(`${purpose}.${versionNumber}.${secret}`)
 		.digest('hex');
 
 	if (raw) {

@@ -11,21 +11,21 @@ import { defaultReactiveHashLength } from '~/utils/generate.js';
 test('generates correct reactive email', () => {
 	expect(
 		generateReactiveEmail({
-			purpose: 'github',
+			purpose: 'amazon',
 			versionNumber: 1,
 			reactiveHashSecret: 'mysecret',
 			domain: 'example.com',
 		})
-	).toEqual('github1hzvnz@example.com');
+	).toEqual('amazon.1.nnnbn@example.com');
 
 	expect(
 		generateReactiveEmail({
-			purpose: 'github',
+			purpose: 'amazon',
 			reactiveHashSecret: 'mysecret',
 			versionNumber: 2,
 			domain: 'example.com',
 		})
-	).toEqual('github2qnhnn@example.com');
+	).toEqual('amazon.2.vhzbm@example.com');
 
 	expect(
 		generateReactiveEmail({
@@ -55,10 +55,10 @@ test('generates correct reactive email', () => {
 test('cli works', async () => {
 	const mockStdout = mockProcessStdout();
 	await mockArgv(
-		['--purpose', 'github', '--secret', 'mysecret', '--version-number', '1'],
+		['--purpose', 'amazon', '--secret', 'mysecret', '--version-number', '1'],
 		async () => {
 			await import('~/bin/cli.js');
-			expect(mockStdout).toHaveBeenCalledWith('github1hzvnz@example.com');
+			expect(mockStdout).toHaveBeenCalledWith('amazon.1.nnnbn@example.com');
 		}
 	);
 });
