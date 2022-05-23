@@ -1,4 +1,4 @@
-## Application (TODO)
+# Reactive Emails Application
 
 - Easily generate a new reactive email + password combination for a new service. Because I don't want to manage passwords, I'll definitely be integrating with a password manager like Bitwarden.
 

@@ -7,7 +7,7 @@ import * as path from 'node:path';
 import process from 'node:process';
 import jsImports from 'rollup-plugin-js-imports';
 import WindiCSS from 'vite-plugin-windicss';
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite';
 
 import { chrome } from '../.electron-vendors.cache.json';
 
@@ -48,8 +48,5 @@ export default defineConfig({
 		},
 		emptyOutDir: true,
 		brotliSize: false,
-	},
-	test: {
-		environment: 'happy-dom',
 	},
 });

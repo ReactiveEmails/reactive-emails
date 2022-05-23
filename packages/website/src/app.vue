@@ -2,6 +2,7 @@
 import HowItWorksSection from '~/components/how-it-works-section.vue';
 import PageFooter from '~/components/page-footer.vue';
 import ReactiveEmailsDemo from '~/components/reactive-emails-demo.vue';
+
 </script>
 
 <template>
