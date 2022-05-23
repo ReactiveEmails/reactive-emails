@@ -6,13 +6,14 @@ import {
 	mdiEye,
 	mdiEyeOff,
 } from '@mdi/js';
-import { copyToClipboard, Notify } from 'quasar';
 import {
 	defaultReactiveHashCharacterSet,
 	defaultReactiveHashLength,
 	generateReactiveHash,
 } from 'reactive-emails';
 import { watch } from 'vue';
+import clipboard from 'clipboardy';
+import { notify } from 'vue3-notify';
 
 let purpose = $ref('');
 const reactiveHashSecret = $ref('mysecret');
@@ -101,17 +102,15 @@ const reactiveEmail = $computed(() => {
 
 async function copyReactiveEmailToClipboard() {
 	try {
-		await copyToClipboard(reactiveEmail);
-		Notify.create({
-			message: 'Successfully copied to clipboard!',
+		await clipboard.write(reactiveEmail);
+		notify({
+			text: 'Successfully copied to clipboard!',
 			type: 'positive',
-			icon: mdiCheckCircle,
 		});
 	} catch {
-		Notify.create({
-			message: "Couldn't copy to clipboard.",
+		notify({
+			text: "Couldn't copy to clipboard.",
 			type: 'negative',
-			icon: mdiAlert,
 		});
 	}
 }

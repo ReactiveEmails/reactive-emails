@@ -1,4 +1,3 @@
-import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 import vue from '@vitejs/plugin-vue';
 import { join } from 'desm';
 import { getProjectDir } from 'lionconfig';
@@ -38,11 +37,7 @@ export default defineConfig({
 	plugins: [
 		vue({
 			reactivityTransform: true,
-			template: {
-				transformAssetUrls,
-			},
 		}),
-		quasar({}),
 		WindiCSS(),
 		readmeLoader(),
 		jsImports(),

@@ -12,6 +12,7 @@ import ReactiveEmailsDemo from '~/components/reactive-emails-demo.vue';
 		</div>
 		<PageFooter class="mt-auto" />
 	</div>
+	<VueNotifications />
 </template>
 
 <style>
