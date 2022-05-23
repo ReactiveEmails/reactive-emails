@@ -86,11 +86,17 @@ Reactive emails are generated via the following algorithm:
 
 \`[Purpose].[Email Version Number].[Reactive Hash]@[Domain]\`
 
-**Purpose:** A word representing the purpose the email is used for. Most of the time, this would be the name of the service you're using the email to register for (e.g. \`amazon\`).
+**Purpose:** A word representing the purpose the email is used for. Most of the time, this would be the name of the service you're using the email to register for (e.g. \`Amazon\`).
 
-**Email Version Number:** The version number of the email. This is needed when an email needs to be regenerated because it got leaked.
+The purpose is case-sensitive because \`amazon\` will result in a different hash than \`Amazon\`. For consistency, it's recommended to capitalize the purpose the same way the company/service does when they refer to themselves (e.g. \`LinkedIn\` and not \`Linkedin\`, \`eBay\` and not \`ebay\`).
 
-**Reactive Hash:** Each email contains an unguessable hash based on the Purpose, the Email Version Number, and a Reactive Hash Secret.
+Because spaces are not permitted in emails, any spaces in the purpose name should be replaced with a dot (e.g. \`Best.Buy\` and not \`Best Buy\`).
+
+Since special characters are not permitted in emails, they should be replaced with the closest alphanumeric counterpart (e.g. \`Barnes.And.Noble\` instead of \`Barnes & Noble\`)
+
+**Email Version Number:** The version number of the email, which must be an integer greater than 0. The version number allows for easy regeneration of an email address in case it gets leaked.
+
+**Reactive Hash:** Each email contains an unguessable hash based on the Purpose, the Email Version Number, and a Reactive Hash Secret. The reactive hash should never contain a dot.
 
 ### Reactive Hash
 
@@ -125,7 +131,7 @@ So, if the last 5 digits of our base 8 number was \`65247\`, then our final reac
 
 If we're generating a reactive email for a new account on Amazon, our purpose string would be \`amazon\`, our version number would be \`1\`, and our reactive hash secret can be any secret (which should be the same for all reactive emails):
 
-**Purpose:** \`amazon\`
+**Purpose:** \`Amazon\`
 
 **Version Number:** \`1\`
 
@@ -134,34 +140,34 @@ If we're generating a reactive email for a new account on Amazon, our purpose st
 Using the character set \`bdhmnqvz\`, our raw reactive hash would then look as follows:
 
 \`\`\`text
-Raw Reactive Hash = Last 5 digits of base8(SHA256(amazon.1.mysecret))
+Raw Reactive Hash = Last 5 digits of base8(SHA256(Amazon.1.mysecret))
 Raw Reactive Hash = Last 5 digits of base8(f415bffef05ef762ab79d4e6a8f555d4a679c2498f7c56f15cac7107169dc904)
-Raw Reactive Hash = 44404 (base 8)
+Raw Reactive Hash = 40574 (base 8)
 \`\`\`
 
 Using the raw reactive hash character map, our final reactive hash would look like:
 
 \`\`\`text
-Raw Reactive Hash   = 44404 (base 8)
-Final Reactive Hash = nnnbn
+Raw Reactive Hash   = 40574 (base 8)
+Final Reactive Hash = nbqzn
 \`\`\`
 
 And thus, if our email domain is \`example.com\`, our reactive email address for Amazon would be:
 
 \`\`\`text
 Reactive Email Formula = [Purpose][Email Version Number][Reactive Hash]@[Domain]
-Final Reactive Email   = amazon.1.nnnbn@example.com
+Final Reactive Email   = Amazon.1.nbqzn@example.com
 \`\`\`
 
 Now, let's say this email accidentally got leaked publicly and spammers are suddenly flooding this email tons of spam. Luckily, reactive emails allow you to easily refresh your email by simply bumping the version number and generating a new unguessable reactive hash:
 
 \`\`\`text
-New Raw Reactive Hash = Last 5 characters of base8(SHA256(amazon.2.mysecret))
-New Raw Reactive Hash = 62703 (base 8)
-Final Reactive Hash   = vhzbm
+New Raw Reactive Hash = Last 5 characters of base8(SHA256(Amazon.2.mysecret))
+New Raw Reactive Hash = 10773 (base 8)
+Final Reactive Hash   = dbzzm
 \`\`\`
 
-Thus, our new reactive email for Amazon would be \`amazon.2.vhzbm@example.com\`.
+Thus, our new reactive email for Amazon would be \`Amazon.2.dbzzm@example.com\`.
 
 ## Explanation
 
