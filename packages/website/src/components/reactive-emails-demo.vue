@@ -93,9 +93,9 @@ const reactiveEmail = $computed(() => {
 		baseAddress.length === 0 ? 'me' : baseAddress;
 
 	if (customDomain) {
-		return `${purpose}${versionNumber}${reactiveHash}@${domain}`;
+		return `${purpose}.${versionNumber}.${reactiveHash}@${domain}`;
 	} else {
-		return `${reactiveEmailBaseAddress}+${purpose}${versionNumber}${reactiveHash}@${domain}`;
+		return `${reactiveEmailBaseAddress}+${purpose}.${versionNumber}.${reactiveHash}@${domain}`;
 	}
 });
 

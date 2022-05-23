@@ -1,5 +1,3 @@
- 
-
 import daisyui from 'daisyui';
 import { defineConfig } from 'windicss/helpers';
 import typography from 'windicss/plugin/typography';
