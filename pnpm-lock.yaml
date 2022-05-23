@@ -190,7 +190,7 @@ importers:
       vite-plugin-windicss: ^1.8.4
       vitest: ^0.12.9
       vue: ^3.2.36
-      vue-input-autowidth: ^1.0.11
+      vue-input-autowidth: 2.2.0
       vue-tsc: ^0.34.16
       vue3-notify: ^0.1.0
       windicss: ^3.5.4
@@ -204,7 +204,7 @@ importers:
       reactive-emails: link:../generator/dist
       simple-vue-icon: 1.3.5_vue@3.2.36
       vue: 3.2.36
-      vue-input-autowidth: 1.0.11
+      vue-input-autowidth: 2.2.0
       vue3-notify: 0.1.0_vue@3.2.36
       windicss: 3.5.4
     devDependencies:
@@ -3724,10 +3724,6 @@ packages:
     resolution: {integrity: sha512-Um/+FxMr9CISWh0bi5Zv0iOD+4cFh5qLeks1qhAopKVAJw3drgKbKySikp7wGhDL0HPeaja0P5ULZrxLkniUVg==}
     dev: true
     optional: true
-
-  /es6-object-assign/1.1.0:
-    resolution: {integrity: sha1-wsNYJlYkfDnqEHyx5mUrb58kUjw=}
-    dev: false
 
   /esbuild-android-64/0.14.39:
     resolution: {integrity: sha512-EJOu04p9WgZk0UoKTqLId9VnIsotmI/Z98EXrKURGb3LPNunkeffqQIkjS2cAvidh+OK5uVrXaIP229zK6GvhQ==}
@@ -9527,10 +9523,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-input-autowidth/1.0.11:
-    resolution: {integrity: sha512-uwIUHBRfueDacjjS7/lTXMHE6bDRA/RH/Jgg7WnM+Z3NnOMXlOz3hMOOBPqZZn13dT78Pc835RX8eX+Z6qNG/w==}
-    dependencies:
-      es6-object-assign: 1.1.0
+  /vue-input-autowidth/2.2.0:
+    resolution: {integrity: sha512-yRngEzIdQb0GxY6+JNIvhDXX9RAuXlq+DwILZMUlK1SO/mGKKYd7Nq42AuUOZC/ZGkMHR400N8FbHVaWFNoYvw==}
     dev: false
 
   /vue-lion/0.0.5_vue@3.2.31:
