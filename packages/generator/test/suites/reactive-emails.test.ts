@@ -11,25 +11,25 @@ import { defaultReactiveHashLength } from '~/utils/generate.js';
 test('generates correct reactive email', () => {
 	expect(
 		generateReactiveEmail({
-			purpose: 'amazon',
+			purpose: 'Amazon',
 			versionNumber: 1,
 			reactiveHashSecret: 'mysecret',
 			domain: 'example.com',
 		})
-	).toEqual('amazon.1.nnnbn@example.com');
+	).toEqual('Amazon.1.nbqzn@example.com');
 
 	expect(
 		generateReactiveEmail({
-			purpose: 'amazon',
+			purpose: 'Amazon',
 			reactiveHashSecret: 'mysecret',
 			versionNumber: 2,
 			domain: 'example.com',
 		})
-	).toEqual('amazon.2.vhzbm@example.com');
+	).toEqual('Amazon.2.dbzzm@example.com');
 
 	expect(
 		generateReactiveEmail({
-			purpose: 'amazon',
+			purpose: 'Amazon',
 			reactiveHashSecret: 'mysecret',
 			versionNumber: 1,
 			domain: 'example.com',
@@ -40,7 +40,7 @@ test('generates correct reactive email', () => {
 		})
 	).toEqual(
 		generateReactiveEmail({
-			purpose: 'amazon',
+			purpose: 'Amazon',
 			reactiveHashSecret: 'mysecret',
 			versionNumber: 1,
 			domain: 'example.com',
