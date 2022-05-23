@@ -40,7 +40,7 @@ export default defineConfig({
 		}),
 		WindiCSS(),
 		readmeLoader(),
-		jsImports(),
+		jsImports() as any,
 	],
 	build: {
 		target: 'es2022',

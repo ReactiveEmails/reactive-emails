@@ -1,18 +1,12 @@
 <script setup lang="ts">
-import {
-	mdiAlert,
-	mdiCheckCircle,
-	mdiContentCopy,
-	mdiEye,
-	mdiEyeOff,
-} from '@mdi/js';
+import { mdiContentCopy, mdiEye, mdiEyeOff } from '@mdi/js';
+import clipboard from 'clipboardy';
 import {
 	defaultReactiveHashCharacterSet,
 	defaultReactiveHashLength,
 	generateReactiveHash,
 } from 'reactive-emails';
 import { watch } from 'vue';
-import clipboard from 'clipboardy';
 import { notify } from 'vue3-notify';
 
 let purpose = $ref('');
