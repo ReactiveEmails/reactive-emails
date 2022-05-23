@@ -9,7 +9,10 @@ import { defineConfig } from 'vite';
 import WindiCSS from 'vite-plugin-windicss';
 
 function readmeLoader(): Plugin {
-	const readmePath = path.join(getProjectDir(import.meta.url), 'readme.md');
+	const readmePath = path.join(
+		getProjectDir(import.meta.url, { monorepoRoot: true }),
+		'readme.md'
+	);
 
 	const readme = fs.readFileSync(readmePath, 'utf8');
 
